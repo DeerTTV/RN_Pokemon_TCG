@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import { FlatList } from "react-native";
 
 import styled from "styled-components/native";
 
@@ -21,20 +22,31 @@ const CardInfo = ({ info, set, onPress }) => {
 
 
 
+  const PriceList = () => {
 
- // Need to set it where it loads a GRID of all available prices from function.. Will also need to set a prio list of items on this card info page.
-  // }
-/* i.e.
- function bla bla () => ...
- {cardTypes.map((type, index) => { if (currentCard.tcgplayer.prices[type]) {
-                  return (
-Market...
-Low... 
-Mid...
-High... 
-
-else undefined... (should be own component?)
-*/
+    return (
+      cardTypes.map((type, index) => {
+        if (info.tcgplayer.prices[type]) {
+          return (
+            <Text key={index}>
+              <Text variant="small">{cardTypeTitles[index]}</Text>
+              <Text variant="small"> Market: &nbsp;
+        <Text variant="small">{"$ " + info.tcgplayer.prices[type].market} &nbsp;</Text>
+              </Text>
+              <Text variant="small">Low: &nbsp;
+        <Text variant="small">{"$ " + info.tcgplayer.prices[type].low} &nbsp;</Text>
+              </Text>
+              <Text variant="small">Mid: &nbsp;
+        <Text variant="small">{"$ " + info.tcgplayer.prices[type].mid} &nbsp;</Text>
+              </Text>
+              <Text variant="small"> High: &nbsp;
+        <Text variant="small">{"$ " + info.tcgplayer.prices[type].high} &nbsp;</Text>
+              </Text>
+            </Text>
+          )
+        } else { return null }
+      }))
+  };
 
   const onImgClickHandler = () => {
     onPress(images.large);
@@ -47,19 +59,20 @@ else undefined... (should be own component?)
       </CardImageContainer>
       <CardContainer bgColor={typeColor}>
         <InfoContainer>
-          <Text variant="small">
+          {/* <Text variant="small">
             <Text variant="header">{name} </Text>
           </Text>
           <Text variant="small">
-             {set_name} -  <Symbol source={{ uri: set_img.symbol }} resizeMode="contain" />
+            {set_name} -  <Symbol source={{ uri: set_img.symbol }} resizeMode="contain" />
           </Text>
           <Text variant="small">
             {rarity} - {number}/{set_total}
-          </Text>
+          </Text> */}
+                    <PriceList></PriceList>
         </InfoContainer>
 
         <RightInfo>
-          <Text variant="small">
+          {/* <Text variant="small">
             {card_val > 0 && <Text variant="small">${card_val}</Text>}
           </Text>
           <Text variant="small">
@@ -67,7 +80,7 @@ else undefined... (should be own component?)
             </Text>
           <Text variant="small">
             Date Acquired
-            </Text>
+            </Text> */}
         </RightInfo>
 
       </CardContainer>
@@ -111,7 +124,7 @@ const InfoContainer = styled.View`
   position: relative;
   flex-direction: column;
   justify-content: space-evenly;
-  flex: 3;
+  flex: 5;
 `;
 
 
@@ -139,5 +152,5 @@ const RightInfo = styled.View`
 flex-direction: column;
 align-items: flex-end;
 justify-content: space-evenly;
-flex: 2;
+flex: 0;
 `;
