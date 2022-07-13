@@ -26,7 +26,7 @@ const OrderByComponent = ({ setSortParam, buttons, params }) => {
   return (
     <Container>
       <TextContainer>
-        <Text variant="regular">Order By</Text>
+        <FontAwesome size={16} color={theme.colors.text.inverse}>Order By</FontAwesome>
       </TextContainer>
       <RowContainer>
         <ButtonGroup
@@ -61,6 +61,7 @@ const Container = styled.View`
 
 const TextContainer = styled.View`
   margin-left: 3%;
+  Color: #FFFFFF;
 `;
 
 const RowContainer = styled.View`

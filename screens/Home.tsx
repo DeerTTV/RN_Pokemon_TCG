@@ -95,5 +95,6 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const Container = styled.SafeAreaView`
+  background: #4E4646;
   flex: 1;
 `;

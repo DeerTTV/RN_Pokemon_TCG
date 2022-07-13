@@ -10,6 +10,7 @@ import CardInfo from "../components/CardInfo";
 import SetHeader from "../components/SetHeader";
 import LoadingComponent from "../components/LoadingComponent";
 import OrderByComponent from "../components/OrderByComponent";
+import SearchBarComponent from "../components/SearchBarComponent"
 
 import { AntDesign } from "@expo/vector-icons";
 import { theme } from "../theme";
@@ -29,7 +30,9 @@ const Details = () => {
   const [imageSrc, setImageSrc] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [apiLoading, setApiLoading] = useState<boolean>(false);
-  const [orderBy, setOrderBy] = useState<string>("id");
+  const [orderBy, setOrderBy] = useState<string>("number");
+  const [input, setInput] = useState("");
+  const [results, setResults] = useState([])
 
   //buttons for sorting and their api strings
   const buttons = ["Name", "Price", "Card #"];
@@ -80,11 +83,14 @@ const Details = () => {
 
   return (
     <Container>
-      <OrderByComponent
+      {/* <OrderByComponent
         setSortParam={sortingHandler}
         buttons={buttons}
         params={params}
-      />
+      /> */}
+      <SearchBarComponent/>
+
+
       <SetHeader
         img=    {cardSet.images.logo}
         name=   {cardSet.name}
@@ -136,6 +142,7 @@ const Container = styled.SafeAreaView`
   width: 100%;
   align-items: center;
   justify-content: center;
+  background: #4E4646;
 `;
 
 const Img = styled.Image`

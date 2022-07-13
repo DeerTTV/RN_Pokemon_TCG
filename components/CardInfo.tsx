@@ -28,12 +28,14 @@ const CardInfo = ({ info, set, onPress }) => {
       cardTypes.map((type, index) => {
         if (info.tcgplayer.prices[type]) {
           return (
+
             <Text key={index}>
-              <Text variant="small">{cardTypeTitles[index]}</Text>
-              <Text variant="small"> Market: &nbsp;
-        <Text variant="small">{"$ " + info.tcgplayer.prices[type].market} &nbsp;</Text>
-              </Text>
-              <Text variant="small">Low: &nbsp;
+              <InfoContainer>
+                <Text variant="small">{cardTypeTitles[index]}</Text>
+                <Text variant="small"> Market: &nbsp;
+        <Text variant="small"> {"$ " + info.tcgplayer.prices[type].market} &nbsp;</Text>
+                </Text>
+                {/* <Text variant="small">Low: &nbsp;
         <Text variant="small">{"$ " + info.tcgplayer.prices[type].low} &nbsp;</Text>
               </Text>
               <Text variant="small">Mid: &nbsp;
@@ -41,8 +43,10 @@ const CardInfo = ({ info, set, onPress }) => {
               </Text>
               <Text variant="small"> High: &nbsp;
         <Text variant="small">{"$ " + info.tcgplayer.prices[type].high} &nbsp;</Text>
-              </Text>
+              </Text> */}
+              </InfoContainer>
             </Text>
+
           )
         } else { return null }
       }))
@@ -59,28 +63,29 @@ const CardInfo = ({ info, set, onPress }) => {
       </CardImageContainer>
       <CardContainer bgColor={typeColor}>
         <InfoContainer>
-          {/* <Text variant="small">
-            <Text variant="header">{name} </Text>
-          </Text>
           <Text variant="small">
+            <Text variant="title">{name}</Text>
+          </Text>
+          <Text variant="regular">
             {set_name} -  <Symbol source={{ uri: set_img.symbol }} resizeMode="contain" />
           </Text>
           <Text variant="small">
             {rarity} - {number}/{set_total}
-          </Text> */}
-                    <PriceList></PriceList>
+          </Text>
+
         </InfoContainer>
 
         <RightInfo>
+          <PriceList></PriceList>
           {/* <Text variant="small">
-            {card_val > 0 && <Text variant="small">${card_val}</Text>}
-          </Text>
-          <Text variant="small">
-            $ +- | % +-
+              {card_val > 0 && <Text variant="small">${card_val}</Text>}
             </Text>
-          <Text variant="small">
-            Date Acquired
-            </Text> */}
+            <Text variant="small">
+              $ +- | % +-
+              </Text>
+            <Text variant="small">
+              Date Acquired
+              </Text> */}
         </RightInfo>
 
       </CardContainer>
@@ -96,13 +101,15 @@ export default memo(
 const ListContainer = styled.TouchableOpacity`
 flex-direction: row;
 padding: 1%;
-height: 110px;
+
 width: 100%;
 justifyContent: space-evenly;
+margin-bottom: 10px;
 `;
 
-const CardContainer = styled(BkgColorView)`
+const CardContainer = styled.TouchableOpacity`
 
+  background-color: ${({ theme }) => theme.colors.bg.primary}
   shadow-color: ${({ theme }) => theme.colors.bg.grey80};
   shadow-offset: 5px 5px;
   shadow-opacity: 0.3;
@@ -111,20 +118,20 @@ const CardContainer = styled(BkgColorView)`
   overflow: hidden;
 
 
+
   justifyContent: space-between;
   flex-direction: row;
   flex: 24;
-  padding: 0 2%;
-  width: 100%;
+  padding: 1% 2%;
+
 
 `;
 
 const InfoContainer = styled.View`
   align-items: flex-start;
-  position: relative;
+  justifyContent: space-between;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex: 5;
+  flex: 11;
 `;
 
 
@@ -132,11 +139,12 @@ const InfoContainer = styled.View`
 const CardImageContainer = styled.View`
   flex: 6;
   justifyContent: center;
+  left-margin: 5px;
 `;
 
 const CardImage = styled.Image`
-  height: 90%;
-  width: 100%;
+  min-height: 90px;
+
 
 `;
 
@@ -151,6 +159,7 @@ const Symbol = styled.Image`
 const RightInfo = styled.View`
 flex-direction: column;
 align-items: flex-end;
-justify-content: space-evenly;
-flex: 0;
+
+justifyContent: space-evenly;
+flex: 9;
 `;

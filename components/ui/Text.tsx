@@ -62,4 +62,5 @@ export default Text;
 
 Text.defaultProps = {
   variant: "body",
+  
 };

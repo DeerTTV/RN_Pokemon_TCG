@@ -8,13 +8,35 @@ import Text from "./ui/Text";
 
 type HomeNavProps = NavProps<"Home">;
 
+
+
+
+
 const SetCard = ({ cardSet }) => {
   const navigation = useNavigation<HomeNavProps>();
 
 
   const { legalities, images, name, id, series, total, printedTotal, releaseDate } = cardSet;
 
-const secretTotal = total - printedTotal;
+  const secretTotal = total - printedTotal;
+
+  const PriceList = (cardSet) => {
+    //   const { images, name, hp, subtypes, supertype, flavorText, types, rules, number, tcgplayer, rarity } = info;
+    const { images: set_img, name: set_name, total: set_total, printedTotal: set_printed, releaseDate: set_release } = cardSet;
+    // const key = Object.keys(tcgplayer.prices)[0];
+    // const card_val = tcgplayer.prices[key].market;
+
+
+    const cardTypes = ["normal", "holofoil", "reverseHolofoil", "1stEditionHolofoil", "unlimitedHolofoil"];
+    const cardTypeTitles = ["Normal", "Holofoil", "Reverse Holofoil", "1st Edition Holo Foil", "Unlimited Holofoil"];
+
+    return (
+      <Text>$1000</Text>
+
+    )
+
+  };
+
 
   const onPressHandler = () => {
     navigation.navigate("SetDetails", { setID: id, cardSet });
@@ -38,27 +60,27 @@ const secretTotal = total - printedTotal;
           <Text variant="small">
             <Text variant="small">{total} </Text>
             Cards
-            {secretTotal > 0 && <Text variant="small"> * {secretTotal} Secrets</Text>} 
+            {secretTotal > 0 && <Text variant="small"> * {secretTotal} Secrets</Text>}
           </Text>
           <Text variant="small">
             <Text variant="small">{releaseDate}</Text>
           </Text>
         </InfoContainer>
-        <StatsContainer>  
+        <StatsContainer>
           <StatsText>
-          <Text variant="header">$3000</Text>
-          </StatsText> 
+            <Text variant="header"> {PriceList(cardSet)} </Text>
+          </StatsText>
           <StatsText>
-          <Text variant="small">BB $160 ($6.00)</Text>
-          </StatsText> 
+            <Text variant="small">BB $160 ($6.00)</Text>
+          </StatsText>
           <StatsText>
-          <Text variant="small">Own 12 (10.21%)</Text>
-          </StatsText> 
+            <Text variant="small">Own 12 (10.21%)</Text>
+          </StatsText>
           <StatsText>
             <Text variant="small">Collection Value</Text>
-          <Text variant="small">$36.00 (~$3.00)</Text>
-          </StatsText> 
-          </StatsContainer>
+            <Text variant="small">$36.00 (~$3.00)</Text>
+          </StatsText>
+        </StatsContainer>
       </ContentContainer>
 
     </CardContainer>

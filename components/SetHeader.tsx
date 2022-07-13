@@ -3,23 +3,25 @@ import styled from "styled-components/native";
 
 import Text from "./ui/Text";
 
+import { theme } from "../theme";
+
 const SetHeader = ({ img, name, amount, secrets ,release }) => {
 
 
   return (
     <Container>
       <TextContainer>
-        <Text variant="title">
+        <Text variant="title" typeColor="inverse">
           {name}
         </Text>
         <TextRow>
-          <Text variant="body">
+          <Text variant="body" typeColor="inverse">
             Released {release}
           </Text>
-          <Text variant="body">
+          <Text variant="body" typeColor="inverse">
             {amount} cards
           </Text>
-          {secrets > 0 &&  <Text variant="body">
+          {secrets > 0 &&  <Text variant="body" typeColor="inverse">
             {secrets} secrets
           </Text>}
         </TextRow>
@@ -47,6 +49,7 @@ const TextContainer = styled.View`
   top: 0;
   left: 0;
   padding: 0 10px 10px;
+
 `;
 
 const TextRow = styled.View`
@@ -54,4 +57,5 @@ const TextRow = styled.View`
   align-items: flex-end;
   justify-content: space-between;
   width: 100%;
+
 `;

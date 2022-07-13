@@ -1,18 +1,4 @@
 export const colors = {
-  types: {
-    colorless: "#afb1b1",
-    darkness: "#657873",
-    dragon: "#ab9b60",
-    fairy: "#c1c176",
-    fighting: "#c67441",
-    fire: "#e3461b",
-    grass: "#477647",
-    lightning: "#bcc353",
-    metal: "#7599a7",
-    psychic: "#bebebe",
-    water: "#56bdc3",
-    default: "#f0e8c7",
-  },
   bg: {
     primary: "#FFFFFF",
     secondary: "#f0e8c7",
